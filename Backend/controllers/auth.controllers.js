@@ -101,7 +101,15 @@ export const updateProfile = async (rew, res, next) => {
 
     res.status(200).json(updatedUser);
   } catch (error) {
-    console.log("Error in Logout Controller", error.message);
+    console.log("Error in UpdateProfile  Controller", error.message);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+export const checkAuth = async (req, res, next) => {
+  try {
+    res.status(200).json(req.user);
+  } catch (error) {
+    console.log("Error in checkAuth Controller", error.message);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };

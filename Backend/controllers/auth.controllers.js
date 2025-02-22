@@ -82,11 +82,10 @@ export const logout = (req, res, next) => {
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
-export const updateProfile = async (rew, res, next) => {
+export const updateProfile = async (req, res, next) => {
   try {
     const { profilePic } = req.body;
-    const userId = req.user_id;
-
+    const userId = req.user._id;
     if (!profilePic) {
       return res.status(400).json({ message: "Profile Pic is required" });
     }
@@ -95,7 +94,7 @@ export const updateProfile = async (rew, res, next) => {
 
     const updatedUser = await User.findByIdAndUpdate(
       userId,
-      { profilePic: uploadResponse.secure_url },
+      { profliePic: uploadResponse.secure_url },
       { new: true }
     );
 

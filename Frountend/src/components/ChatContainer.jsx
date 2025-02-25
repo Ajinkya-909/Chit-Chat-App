@@ -6,14 +6,40 @@ import { useAuthStore } from "../store/useAuthStore";
 import { formatMessageTime } from "../lib/utils";
 
 function ChatContainer() {
-  const { selectedUser, messages, getMessages, isMessagesLoading } =
-    useChatStore();
+  const {
+    selectedUser,
+    messages,
+    getMessages,
+    isMessagesLoading,
+    subscribeToMessages,
+    unsubscribeFromMessages,
+  } = useChatStore();
   const { authUser } = useAuthStore();
-  // const messageEndRef = useRef(null);
+  const messageEndRef = useRef(null);
 
   useEffect(() => {
     getMessages(selectedUser._id);
-  }, [selectedUser._id, getMessages]);
+    subscribeToMessages();
+
+    return () => {
+      unsubscribeFromMessages();
+    };
+  }, [
+    selectedUser._id,
+    getMessages,
+    unsubscribeFromMessages,
+    subscribeToMessages,
+  ]);
+
+  useEffect(() => {
+    if (messageEndRef.current && messages) {
+      messageEndRef.current.scrollIntoView({ behavior: smooth });
+    }
+
+    return () => {
+      second;
+    };
+  }, [third]);
 
   if (isMessagesLoading)
     return (
@@ -42,7 +68,7 @@ function ChatContainer() {
             className={`chat ${
               messages.senderId === authUser._id ? "chat-end" : "chat-start"
             }`}
-            // ref={messageEndRef}
+            ref={messageEndRef}
           >
             <div className=" chat-image avatar">
               <div

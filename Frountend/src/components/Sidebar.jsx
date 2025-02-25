@@ -6,7 +6,7 @@ import { Users } from "lucide-react";
 function Sidebar() {
   const { getUsers, users, selectedUser, setSelectedUser, isUserLoading } =
     useChatStore();
-  const onlineUsers = useAuthStore();
+  const { onlineUsers } = useAuthStore();
   useEffect(() => {
     getUsers();
   }, [getUsers]);
@@ -50,12 +50,19 @@ function Sidebar() {
                 style={{ height: "3rem", width: "3rem" }}
                 className="size-12 object-cover rounded-full"
               />
-              {/* {onlineUsers.includes(user._id) && (
+              {onlineUsers.includes(user._id) && (
                 <span
+                  style={{
+                    height: "0.75rem",
+                    width: "0.75rem",
+                    backgroundColor: "green",
+                    bottom: "0px",
+                    right: "0px",
+                  }}
                   className="absolute bottom-0 right-0 size-3 bg-green-500 
                       rounded-full ring-2 ring-zinc-900"
                 />
-              )} */}
+              )}
             </div>
 
             {/* User info - only visible on larger screens */}

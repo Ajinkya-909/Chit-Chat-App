@@ -45,7 +45,7 @@ function ProfilePage() {
             <div className="relative">
               <div className=" h-24 w-24">
                 <img
-                  src={authUser.profliePic || selectedImg || "/avatar.png"}
+                  src={authUser.profilePic || selectedImg || "/avatar.png"}
                   alt="Profile"
                   style={{ objectFit: "cover" }}
                   className=" h-full w-full rounded-full  border-4 "

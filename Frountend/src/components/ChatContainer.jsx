@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useChatStore } from "../store/useChatStore";
 import ChatHeader from "./ChatHeader";
 import MessageInput from "./MessageInput";
@@ -33,13 +33,9 @@ function ChatContainer() {
 
   useEffect(() => {
     if (messageEndRef.current && messages) {
-      messageEndRef.current.scrollIntoView({ behavior: smooth });
+      messageEndRef.current.scrollIntoView({ behavior: "smooth" });
     }
-
-    return () => {
-      second;
-    };
-  }, [third]);
+  }, [messages]);
 
   if (isMessagesLoading)
     return (
@@ -60,7 +56,7 @@ function ChatContainer() {
       <ChatHeader />
       <div
         style={{ padding: "1rem" }}
-        className="flex-1 overflow-y-auto  p-4 space-y-4"
+        className="flex-1 overflow-y-scroll  p-4 space-y-4"
       >
         {messages.map((messages) => (
           <div
@@ -78,8 +74,8 @@ function ChatContainer() {
                 <img
                   src={
                     messages.senderId === authUser._id
-                      ? authUser.profliePic || "/avatar.png"
-                      : selectedUser.profliePic || "/avatar.png"
+                      ? authUser.profilePic || "/avatar.png"
+                      : selectedUser.profilePic || "/avatar.png"
                   }
                   alt="profile pic"
                 />

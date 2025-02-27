@@ -18,12 +18,12 @@ export const signup = async (req, res, next) => {
     }
 
     const salt = await bcrypt.genSalt(10);
-    const hashedPassowrd = await bcrypt.hash(password, salt);
+    const hashedPassword = await bcrypt.hash(password, salt);
 
     const newUser = new User({
       fullName,
       email,
-      password: hashedPassowrd,
+      password: hashedPassword,
     });
 
     if (newUser) {
@@ -57,6 +57,7 @@ export const login = async (req, res, next) => {
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
     if (!isPasswordCorrect) {
+      console.log(password, user.password);
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
@@ -94,7 +95,7 @@ export const updateProfile = async (req, res, next) => {
 
     const updatedUser = await User.findByIdAndUpdate(
       userId,
-      { profliePic: uploadResponse.secure_url },
+      { profilePic: uploadResponse.secure_url },
       { new: true }
     );
 

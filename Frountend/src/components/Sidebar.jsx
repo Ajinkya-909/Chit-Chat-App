@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useChatStore } from "../store/useChatStore";
 import { useAuthStore } from "../store/useAuthStore";
 import { Users } from "lucide-react";
@@ -7,9 +7,15 @@ function Sidebar() {
   const { getUsers, users, selectedUser, setSelectedUser, isUserLoading } =
     useChatStore();
   const { onlineUsers } = useAuthStore();
+  const [showOnlineOnly, setshowOnlineOnly] = useState(false);
   useEffect(() => {
     getUsers();
   }, [getUsers]);
+  let filteredUsers = showOnlineOnly
+    ? users.filter((user) => onlineUsers.includes(user._id))
+    : users;
+
+  console.log(filteredUsers);
 
   if (isUserLoading)
     return (
@@ -28,22 +34,38 @@ function Sidebar() {
           <Users className="size-6" />
           <span className="font-medium lg:block">Contacts</span>
         </div>
-        {/* TODO: Online filter toggle */}
+        <div
+          style={{ marginTop: "1rem" }}
+          className="mt-3 lg:flex items-center gap-2"
+        >
+          <label className="cursor-pointer flex items-center gap-2">
+            <input
+              type="checkbox"
+              checked={showOnlineOnly}
+              onChange={(e) => setshowOnlineOnly(e.target.checked)}
+              className="checkbox checkbox-sm"
+            />
+            <span className="text-sm">Show online only</span>
+          </label>
+          <span className="text-xs text-zinc-500">
+            ({onlineUsers.length - 1} online)
+          </span>
+        </div>
       </div>
 
-      <div className="overflow-y-auto w-full py-3">
-        {users.map((user) => (
+      <div className="overflow-y-scroll h-full w-full py-3">
+        {filteredUsers.map((user) => (
           <button
             style={{ gap: "1rem", padding: "0.75rem" }}
             key={user._id}
             onClick={() => setSelectedUser(user)}
             className={`
-                  w-full p-3 flex items-center gap-3
+                  w-full p-3  flex gap-3 
                   hover:bg-base-300 transition-colors
                 
                 `}
           >
-            <div className="relative mx-auto lg:mx-0">
+            <span className="relative ">
               <img
                 src={user.profilePic || "/avatar.png"}
                 alt={user.name}
@@ -63,17 +85,18 @@ function Sidebar() {
                       rounded-full ring-2 ring-zinc-900"
                 />
               )}
-            </div>
+            </span>
 
             {/* User info - only visible on larger screens */}
-            <div className=" lg:block text-left min-w-0">
+            <span className=" lg:block text-left min-w-0">
               <div className="font-medium truncate">{user.fullName}</div>
               <div className="text-sm text-zinc-400">
-                {/* {onlineUsers.includes(user._id) ? "Online" : "Offline"} */}
+                {onlineUsers.includes(user._id) ? "Online" : "Offline"}
               </div>
-            </div>
+            </span>
           </button>
         ))}
+        <div>{filteredUsers.length === 0 && <p>No users online</p>}</div>
       </div>
     </aside>
   );

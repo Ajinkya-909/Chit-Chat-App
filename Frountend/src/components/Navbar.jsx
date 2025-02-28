@@ -18,7 +18,10 @@ const Navbar = () => {
               to="/"
               className="flex items-center gap-2.5 hover:opacity-80 transition-all"
             >
-              <h1 style={{ fontWeight: "bold", fontSize: "x-large" }}>
+              <h1
+                style={{ fontWeight: "bold", fontSize: "x-large" }}
+                className="md:text-lg"
+              >
                 Chit Chat
               </h1>
             </Link>
@@ -34,14 +37,14 @@ const Navbar = () => {
               btn btn-sm gap-2 transition-colors `}
             >
               <Settings className="w-4 h-4" />
-              <span className=" sm:inline">Settings</span>
+              <span className="hide-text sm:inline">Settings</span>
             </Link>
 
             {authUser && (
               <>
                 <Link to={"/profile"} className={`btn btn-sm gap-2`}>
                   <User className="size-5" />
-                  <span className=" sm:inline">Profile</span>
+                  <span className="hide-text sm:inline">Profile</span>
                 </Link>
 
                 <button
@@ -49,7 +52,7 @@ const Navbar = () => {
                   onClick={logout}
                 >
                   <LogOut className="size-5" />
-                  <span className=" sm:inline">Logout</span>
+                  <span className="hide-text sm:inline">Logout</span>
                 </button>
               </>
             )}

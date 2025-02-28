@@ -51,12 +51,12 @@ function ChatContainer() {
   return (
     <div
       style={{ borderRadius: "1rem" }}
-      className="flex-1 border flex flex-col overflow-auto"
+      className="flex-1 border flex flex-col "
     >
       <ChatHeader />
       <div
-        style={{ padding: "1rem" }}
-        className="flex-1 overflow-y-scroll  p-4 space-y-4"
+        style={{ padding: "1rem", overflowY: "scroll", scrollbarWidth: "thin" }}
+        className="flex-1 overflow-y-auto  p-4 space-y-4"
       >
         {messages.map((messages) => (
           <div

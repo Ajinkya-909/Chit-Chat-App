@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useChatStore } from "../store/useChatStore";
 import { useAuthStore } from "../store/useAuthStore";
 import { Users } from "lucide-react";
+import "../App.css";
 
 function Sidebar() {
   const { getUsers, users, selectedUser, setSelectedUser, isUserLoading } =
@@ -15,8 +16,6 @@ function Sidebar() {
     ? users.filter((user) => onlineUsers.includes(user._id))
     : users;
 
-  console.log(filteredUsers);
-
   if (isUserLoading)
     return (
       <div className="mx-auto pt-16">
@@ -27,12 +26,12 @@ function Sidebar() {
   return (
     <aside
       style={{ height: "100%" }}
-      className="h-full relative w-20 lg:w-72 flex flex-col transition-all duration-200"
+      className="relative w-20 lg:w-72 flex flex-col transition-all duration-200"
     >
       <div style={{ padding: "1rem" }} className="w-full p-5">
         <div style={{ gap: "0.5rem" }} className="flex items-center gap-2">
           <Users className="size-6" />
-          <span className="font-medium lg:block">Contacts</span>
+          <span className="font-medium hide-text">Contacts</span>
         </div>
         <div
           style={{ marginTop: "1rem" }}
@@ -43,17 +42,22 @@ function Sidebar() {
               type="checkbox"
               checked={showOnlineOnly}
               onChange={(e) => setshowOnlineOnly(e.target.checked)}
-              className="checkbox checkbox-sm"
+              className="checkbox checkbox-sm "
             />
-            <span className="text-sm">Show online only</span>
+            <span className="text-sm " style={{ margin: "1rem" }}>
+              Show online only
+            </span>
           </label>
-          <span className="text-xs text-zinc-500">
+          <span className="text-xs hide-text text-zinc-500">
             ({onlineUsers.length - 1} online)
           </span>
         </div>
       </div>
 
-      <div className="overflow-y-scroll h-full w-full py-3">
+      <div
+        style={{ height: "100%", overflowY: "scroll", scrollbarWidth: "thin" }}
+        className=" w-full py-3"
+      >
         {filteredUsers.map((user) => (
           <button
             style={{ gap: "1rem", padding: "0.75rem" }}
@@ -88,7 +92,7 @@ function Sidebar() {
             </span>
 
             {/* User info - only visible on larger screens */}
-            <span className=" lg:block text-left min-w-0">
+            <span className=" lg:block text-left min-w-0 hide-text">
               <div className="font-medium truncate">{user.fullName}</div>
               <div className="text-sm text-zinc-400">
                 {onlineUsers.includes(user._id) ? "Online" : "Offline"}

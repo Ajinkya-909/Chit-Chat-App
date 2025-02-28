@@ -15,7 +15,6 @@ import { useThemeStorage } from "./store/useThemeStorage.js";
 function App() {
   const { authUser, checkAuth, isCheckingAuth, onlineUsers } = useAuthStore();
   const { theme } = useThemeStorage();
-  console.log(onlineUsers);
   useEffect(() => {
     checkAuth();
   }, []);
@@ -29,7 +28,7 @@ function App() {
   }
 
   return (
-    <div data-theme={theme}>
+    <div style={{ overflow: "hidden" }} data-theme={theme}>
       <Navbar />
       <Routes>
         <Route

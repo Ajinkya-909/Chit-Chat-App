@@ -28,16 +28,31 @@ function Sidebar() {
       style={{ height: "100%" }}
       className="relative w-20 lg:w-72 flex flex-col transition-all duration-200"
     >
-      <div style={{ padding: "1rem" }} className="w-full p-5">
-        <div style={{ gap: "0.5rem" }} className="flex items-center gap-2">
+      <div style={{ padding: "0.5rem" }} className="w-full  p-5">
+        <div
+          style={{ gap: "0.5rem", marginBottom: "0.25rem" }}
+          className="flex items-center gap-2"
+        >
           <Users className="size-6" />
           <span className="font-medium hide-text">Contacts</span>
         </div>
+        {/* online users display for mobile users */}
+        <label className="cursor-pointer hidden sidebar items-center gap-2">
+          <input
+            type="checkbox"
+            checked={showOnlineOnly}
+            onChange={(e) => setshowOnlineOnly(e.target.checked)}
+            className="checkbox checkbox-sm "
+          />
+          <span className="text-sm ">online</span>
+        </label>
+        {/*  */}
+
         <div
           style={{ marginTop: "1rem" }}
-          className="mt-3 lg:flex items-center gap-2"
+          className="mt-3 lg:flex hide-text items-center gap-2"
         >
-          <label className="cursor-pointer flex items-center gap-2">
+          <label className="cursor-pointer sidebar flex items-center gap-2">
             <input
               type="checkbox"
               checked={showOnlineOnly}
@@ -63,7 +78,7 @@ function Sidebar() {
             style={{ gap: "1rem", padding: "0.75rem" }}
             key={user._id}
             onClick={() => setSelectedUser(user)}
-            className={`
+            className={`sidebar-padding
                   w-full p-3  flex gap-3 
                   hover:bg-base-300 transition-colors
                 
@@ -100,7 +115,9 @@ function Sidebar() {
             </span>
           </button>
         ))}
-        <div>{filteredUsers.length === 0 && <p>No users online</p>}</div>
+        <div className="text">
+          {filteredUsers.length === 0 && <p>No users online</p>}
+        </div>
       </div>
     </aside>
   );

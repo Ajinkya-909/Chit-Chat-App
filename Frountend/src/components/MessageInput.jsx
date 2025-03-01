@@ -3,6 +3,7 @@ import { useRef, useState } from "react";
 import { useChatStore } from "../store/useChatStore";
 import { Image, Send, X } from "lucide-react";
 import toast from "react-hot-toast";
+import "../App.css";
 
 const MessageInput = () => {
   const [text, setText] = useState("");
@@ -94,7 +95,10 @@ const MessageInput = () => {
         onSubmit={handleSendMessage}
         className="flex items-center gap-2"
       >
-        <div style={{ gap: "0.5rem" }} className="flex-1 flex gap-2">
+        <div
+          style={{ gap: "0.5rem" }}
+          className="flex-1 items-center flex gap-2"
+        >
           <input
             type="text"
             className="w-full input input-bordered rounded-lg input-sm sm:input-md"
@@ -112,19 +116,29 @@ const MessageInput = () => {
 
           <button
             type="button"
-            className={` sm:flex btn btn-circle
-                     ${imagePreview ? "text-emerald-500" : "text-zinc-400"}`}
+            className={` hide-text sm:flex btn btn-circle"
+                     ${imagePreview ? "text-emerald-500" : "text-zinc-400"} `}
             onClick={() => fileInputRef.current?.click()}
           >
-            <Image size={20} />
+            <Image size={20} className="input-btns" />
           </button>
+          {/* Mobile Users */}
+          <button
+            type="button"
+            className={`display sm:flex hidden "
+                     ${imagePreview ? "text-emerald-500" : "text-zinc-400"} `}
+            onClick={() => fileInputRef.current?.click()}
+          >
+            <Image size={20} className="input-btns" />
+          </button>
+          {/*  */}
         </div>
         <button
           type="submit"
           className="btn btn-circle p-2"
           disabled={!text.trim() && !imagePreview}
         >
-          <Send size={25} />
+          <Send size={25} className="input-btns" />
         </button>
       </form>
     </div>

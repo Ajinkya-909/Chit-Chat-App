@@ -41,7 +41,7 @@ const SignUpPage = () => {
 
   return (
     <>
-      <div className=" w-3/5 max-[760px]:w-4/5 mx-auto my-4 px-4">
+      <div className=" w-3/5 max-[760px]:w-4/5 h-[calc(100vh-70px)] mx-auto my-4 px-4">
         {/* left side */}
         <div className="flex flex-col justify-center items-center p-6 sm:p-12">
           <div className="w-full max-w-md space-y-8">

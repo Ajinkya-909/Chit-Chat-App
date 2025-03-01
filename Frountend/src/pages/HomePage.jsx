@@ -8,8 +8,8 @@ function HomePage() {
   const { selectedUser } = useChatStore();
   return (
     <div
-      style={{ height: "max-content", position: "relative", margin: "1rem" }}
-      className=" bg-base-200"
+      style={{ position: "relative" }}
+      className=" bg-base-200 h-[calc(100vh-70px)]"
     >
       <div
         style={{
@@ -19,8 +19,9 @@ function HomePage() {
         }}
         className="bg-base-100  rounded-lg shadow w-full max-w-6xl h-full"
       >
-        <div className="flex h-[80vh]  relative rounded-lg">
+        <div style={{ height: "100%" }} className="flex relative rounded-lg">
           <Sidebar />
+
           {!selectedUser ? <NoChatSelected /> : <ChatContainer />}
         </div>
       </div>

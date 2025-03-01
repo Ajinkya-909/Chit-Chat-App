@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import { useAuthStore } from "../store/useAuthStore";
-import { LogOut, MessageSquare, Settings, User } from "lucide-react";
+import { LogOut, Settings, User } from "lucide-react";
 
 const Navbar = () => {
   const { logout, authUser } = useAuthStore();
@@ -9,15 +9,15 @@ const Navbar = () => {
   return (
     <header
       style={{ padding: "0.5rem", marginBottom: "1rem" }}
-      className="border-b border-base-300 w-full top-0 z-40 "
+      className="border-b border-base-300 w-full relative top-0 z-40 "
     >
-      <div className="container mx-auto px-4 h-16">
+      <div style={{ paddingLeft: "2rem" }} className="container mx-auto h-16">
         <div className="flex items-center justify-between h-full">
-          <div className="flex items-center gap-8">
-            <Link
-              to="/"
-              className="flex items-center gap-2.5 hover:opacity-80 transition-all"
-            >
+          <div
+            style={{ gap: "0.5rem" }}
+            className="flex items-center mx-2 justify-between gap-2"
+          >
+            <Link to="/" className="hover:opacity-80 transition-all">
               <h1
                 style={{ fontWeight: "bold", fontSize: "x-large" }}
                 className="md:text-lg"
@@ -28,7 +28,7 @@ const Navbar = () => {
           </div>
 
           <div
-            style={{ gap: "1rem" }}
+            style={{ gap: "0.5rem" }}
             className="flex justify-around items-center gap-2"
           >
             <Link

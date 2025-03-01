@@ -18,7 +18,10 @@ const LoginPage = () => {
   };
 
   return (
-    <div className=" w-3/5 max-[760px]:w-4/5 mx-auto my-4 px-4">
+    <div
+      style={{ scrollbarWidth: "small" }}
+      className=" w-3/5 h-[calc(100vh-70px)] max-[760px]:w-4/5 mx-auto my-4 px-4"
+    >
       <div className="flex flex-col justify-center items-center p-6 sm:p-12">
         <div className="w-full h-full max-w-md space-y-8">
           {/* Logo */}

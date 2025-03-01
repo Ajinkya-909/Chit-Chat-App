@@ -2,4 +2,21 @@
   .hide-text {
     display: none;
   }
+  .display {
+    display: flex;
+  }
+  .sidebar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: small;
+    margin-top: "0.25rem";
+  }
+  .text {
+    font-size: small;
+  }
+  .input-btns {
+    size: "20";
+    padding: "1rem";
+  }
 }

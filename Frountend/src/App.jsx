@@ -28,7 +28,7 @@ function App() {
   }
 
   return (
-    <div style={{ overflow: "hidden" }} data-theme={theme}>
+    <div style={{ overflow: "hidden", height: "100%" }} data-theme={theme}>
       <Navbar />
       <Routes>
         <Route

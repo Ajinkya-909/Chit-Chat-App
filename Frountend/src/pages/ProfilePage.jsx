@@ -19,7 +19,7 @@ function ProfilePage() {
   };
   return (
     <div
-      style={{ margin: "1.5rem auto" }}
+      style={{ margin: "1.5rem auto", height: "calc(100vh-70px)" }}
       className=" w-3/5 max-[760px]:w-4/5 h-[calc(100vh-70px)]  mx-auto px-4"
     >
       <div className="max-w-2xl mx-auto p-4 py-8">

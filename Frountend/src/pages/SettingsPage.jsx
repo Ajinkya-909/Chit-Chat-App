@@ -2,6 +2,7 @@ import { THEMES } from "../constants/index.js";
 import React from "react";
 import { Send } from "lucide-react";
 import { useThemeStorage } from "../store/useThemeStorage";
+import "../App.css";
 
 const PREVIEW_MESSAGES = [
   { id: 1, content: "Hey! How's it going?", isSent: false },
@@ -42,9 +43,8 @@ const SettingsPage = () => {
                 data-theme={t}
                 style={{
                   height: "1.25rem",
-                  width: "60%",
                 }}
-                className="relative w-full rounded-md "
+                className="relative  color-box w-8/12 rounded-md "
               >
                 <div
                   data-theme={t}
@@ -101,7 +101,7 @@ const SettingsPage = () => {
                   ></div>
                 </div>
               </div>
-              <span className="text-[11px] font-medium truncate w-full text-center">
+              <span className="text-[11px] hide-text font-medium truncate w-full text-center">
                 {t.charAt(0).toUpperCase() + t.slice(1)}
               </span>
             </button>

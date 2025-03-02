@@ -40,7 +40,6 @@ export const useAuthStore = create((set, get) => ({
     set({ isLogginginIN: true });
     try {
       const res = await axiosInstance.post("/auth/login", data);
-      console.log(res, data);
       set({ authUser: res.data });
       toast.success("Logged in Successfully");
       get().connectSocket();
@@ -66,7 +65,6 @@ export const useAuthStore = create((set, get) => ({
     set({ isUpdatingProfile: true });
     try {
       const res = await axiosInstance.put("/auth/update-profile", data);
-      console.log(res);
 
       // fix data size issue
 

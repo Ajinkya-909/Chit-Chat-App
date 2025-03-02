@@ -29,11 +29,8 @@ function ProfilePage() {
             className="text-center my-5 mb-8"
           >
             <h1 style={{ fontSize: "xx-large", fontWeight: "bold" }}>
-              Create Account
+              Profile
             </h1>
-            <p className="text-base-content/60">
-              Get started with your free account
-            </p>
           </div>
 
           {/* avatar upload section */}
@@ -43,7 +40,10 @@ function ProfilePage() {
             className="flex flex-col items-center gap-4"
           >
             <div className="relative">
-              <div className=" h-24 w-24">
+              <div
+                style={{ height: "6rem", width: "6rem" }}
+                className=" h-24 w-24"
+              >
                 <img
                   src={authUser.profilePic || selectedImg || "/avatar.png"}
                   alt="Profile"

@@ -29,7 +29,7 @@ function ProfilePage() {
             className="text-center my-5 mb-8"
           >
             <h1 style={{ fontSize: "xx-large", fontWeight: "bold" }}>
-              Profile
+              Profile Page
             </h1>
           </div>
 
@@ -41,7 +41,7 @@ function ProfilePage() {
           >
             <div className="relative">
               <div
-                style={{ height: "6rem", width: "6rem" }}
+                style={{ height: "15rem", width: "15rem" }}
                 className=" h-24 w-24"
               >
                 <img

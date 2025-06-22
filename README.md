@@ -1,5 +1,5 @@
 
-# Chit Chat App  Add commentMore actions
+# Chit Chat App 
 
 A real-time chat application built using the **MERN stack** with **Socket.IO** for instant messaging. It includes authentication, theme customization, profile picture updates, online user status, and image sharing.  
 
@@ -22,19 +22,19 @@ A real-time chat application built using the **MERN stack** with **Socket.IO** f
 
 1. **Clone the repository:**  
    ```sh
-   git clone https://github.com/your-username/chit-chat-app.git
-   cd chit-chat-app
+   git clone https://github.com/Ajinkya-909/Chit-Chat-App.git
+   cd Chit-Chat-App
    ```
 
 2. **Install dependencies:**  
    - **Frontend:**  
      ```sh
-     cd client
+     cd Frontend
      npm install
      ```
    - **Backend:**  
      ```sh
-     cd server
+     cd Backend
      npm install
      ```
 
@@ -46,15 +46,15 @@ A real-time chat application built using the **MERN stack** with **Socket.IO** f
    ```
 
 4. **Run the application:**  
-   - **Backend:**  
-     ```sh
-     cd server
-     npm start
-     ```
    - **Frontend:**  
      ```sh
-     cd client
-     npm start
+     cd Frontend
+     npm run dev
+     ```
+   - **Backend:**  
+     ```sh
+     cd Backend
+     npm run dev
      ```
 
 5. **Open the app in your browser:**  
